@@ -66,13 +66,14 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "lint-staged": {
-  "*.js": "eslint"
-}
+    "*.js": "eslint"
+  }
 }
