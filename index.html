@@ -18,6 +18,7 @@
     <div class="form-group">Nota 4 (40%): <input type="number" id="n4"></div>
     
     <button onclick="calcular()">Calcular Promedio</button>
+    <button onclick="limpiar()">Limpiar</button>
     
     <h2 id="resultado"></h2>
 
@@ -37,12 +38,35 @@
                     //si todo sale bine se muestra el resultado como "Prmedio Final: resultado" todo eso en negro
                     document.getElementById('resultado').innerText = "Promedio Final: " + resultado;
                     document.getElementById('resultado').style.color = "black";
+                    
+                    //aqui se muestra si esta aprobado o  no 
+                    if (resultado >= 51) {
+                        document.getElementById('resultado').innerText += " - Aprobado";
+                        document.getElementById('resultado').style.color = "green";
+                    } else {
+                        document.getElementById('resultado').innerText += " - Reprobado";
+                        document.getElementById('resultado').style.color = "red";
+                    }
+
+
                 } catch (error) {
-                    // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo 
+                    // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo     
                     document.getElementById('resultado').innerText = error.message;
                     document.getElementById('resultado').style.color = "red";
                 }
             }
+
+            function limpiar() {
+                // borra los valores que hay en las notas
+                document.getElementById('n1').value = "";
+                document.getElementById('n2').value = "";
+                document.getElementById('n3').value = "";
+                document.getElementById('n4').value = "";
+                
+                // limpia el resultado que se muestra en pantalla
+                document.getElementById('resultado').innerText = "";
+            }
+
     </script>
 </body>
 </html>
