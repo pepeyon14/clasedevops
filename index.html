@@ -21,25 +21,28 @@
     
     <h2 id="resultado"></h2>
 
+    <script src="app.js" ></script>
+
     <script>
-        function calcular() {
-            const n1 = parseFloat(document.getElementById('n1').value);
-            const n2 = parseFloat(document.getElementById('n2').value);
-            const n3 = parseFloat(document.getElementById('n3').value);
-            const n4 = parseFloat(document.getElementById('n4').value);
-            
-            const notas = [n1, n2, n3, n4];
+            function calcular() {
+                const n1 = parseFloat(document.getElementById('n1').value);//se define las variables que van a tomar el valor de las notas
+                const n2 = parseFloat(document.getElementById('n2').value);
+                const n3 = parseFloat(document.getElementById('n3').value);
+                const n4 = parseFloat(document.getElementById('n4').value);
+                
+                try {
+                    //se llama a la funcion calcularPromedioPonderado donde estan los calculos, 
 
-            if (notas.some(n => n < 1 || n > 100 || isNaN(n))) {
-                document.getElementById('resultado').innerText = "Error: Las notas deben ser numeros entre 1 y 100";
-                document.getElementById('resultado').style.color = "red";
-                return; 
+                    const resultado = calcularPromedioPonderado(n1, n2, n3, n4);
+                    //si todo sale bine se muestra el resultado como "Prmedio Final: resultado" todo eso en negro
+                    document.getElementById('resultado').innerText = "Promedio Final: " + resultado;
+                    document.getElementById('resultado').style.color = "black";
+                } catch (error) {
+                    // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo 
+                    document.getElementById('resultado').innerText = error.message;
+                    document.getElementById('resultado').style.color = "red";
+                }
             }
-
-            const promedio = (n1 * 0.1) + (n2 * 0.2) + (n3 * 0.3) + (n4 * 0.4);
-            document.getElementById('resultado').innerText = "Promedio Final: " + promedio.toFixed(2);
-            document.getElementById('resultado').style.color = "black";
-        }
     </script>
 </body>
 </html>

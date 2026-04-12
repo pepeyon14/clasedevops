@@ -1,16 +1,16 @@
 name: Pipeline DevOps
 on:
-  push:
+  push: #se ejecuta cada ver que se hace un push 
     branches: [ main ]
-jobs:
+jobs: #se define las tareas que va a haecr el github (actions)
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #se define el sistema operativo que se va a usar para ejecutar las tareas
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v3 # copia los archivos del reposotorio a una maquina virtual
+      - uses: actions/setup-node@v3 # se configura el node.js en el servidor virtual para poder ocupar js
         with:
-          node-version: 18
-      - run: npm install
-      - run: npx eslint .
-      - run: npm test
-      - run: echo "deploy exitoso"
+          node-version: 18 # se define la version de node.js que se va a usar
+      - run: npm install # se ejecuta el comando para instalar las dependencias del proyecto
+      - run: npx eslint . #se ejecuta ESLint para revisar que no haya errores de estilo
+      - run: npm test # se ejecuta Jest para validar que el promedio se calcule bien
+      - run: echo "deploy exitoso" # si lo demas salio bien se imprime este mensaje en el github
