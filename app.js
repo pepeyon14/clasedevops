@@ -3,7 +3,7 @@ function calcularPromedioPonderado(n1, n2, n3, n4) {
         throw new Error("Las notas deben ser numeros entre 1 y 100");// tambien esta el isNaN que es para que no accepte valores que no sean numeros 
     }
     
-    const promedio = (n1 * 0.1) + (n2 * 0.2) + (n3 * 0.3) + (n4 * 0.4);
+    const promedio = (n1 * 0.30) + (n2 * 0.2) + (n3 * 0.3) + (n4 * 0.4);
     return parseFloat(promedio.toFixed(2)); //retorna el resultado con dos decimales
 }
 
