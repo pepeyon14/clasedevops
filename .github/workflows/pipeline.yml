@@ -11,6 +11,7 @@ jobs: #se define las tareas que va a haecr el github (actions)
         with:
           node-version: 18 # se define la version de node.js que se va a usar
       - run: npm install # se ejecuta el comando para instalar las dependencias del proyecto
+      - run: npm audit --audit-level high #auditoria de seguridad para revisar que no haya vulnerabilidades en las dependencias
       - run: npx eslint . #se ejecuta ESLint para revisar que no haya errores de estilo
       - run: npm test # se ejecuta Jest para validar que el promedio se calcule bien
       - run: echo "deploy exitoso" # si lo demas salio bien se imprime este mensaje en el github
