@@ -9,7 +9,7 @@
     "prettier": "^3.8.1"
   },
   "name": "devops_ejemplo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "app.js",
   "dependencies": {
     "acorn": "^8.16.0",
