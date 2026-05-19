@@ -46,11 +46,12 @@ const server = http.createServer((req, res) => {
     }
 });
 
-// Escuchar en el puerto 3000
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
-
+// Escuchar en el puerto 3000 SOLO si no se está importando desde un test
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    server.listen(PORT, () => {
+        console.log(`Servidor corriendo en el puerto ${PORT}`);
+    });
+}
 // Exportamos para el testing
 module.exports = { calcularPromedioPonderado, server };
