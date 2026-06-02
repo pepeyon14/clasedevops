@@ -2,23 +2,21 @@
 const { calcularPromedioPonderado } = require('../index'); // Trae la función desde index.js
 
 describe('Pruebas de Cálculo de Promedio Ponderado', () => {
-    
-    test('Debe calcular el promedio correcto con notas y porcentajes válidos', () => {
-        const notas = [5.0, 6.0];
-        const porcentajes = [0.4, 0.6];
+  test('Debe calcular el promedio correcto con notas y porcentajes válidos', () => {
+    const notas = [5.0, 6.0];
+    const porcentajes = [0.4, 0.6];
 
-        expect(calcularPromedioPonderado(notas, porcentajes)).toBe(5.6);
-    });
+    expect(calcularPromedioPonderado(notas, porcentajes)).toBe(5.6);
+  });
 
-    test('Debe retornar 0 si los arreglos están vacíos', () => {
-        expect(calcularPromedioPonderado([], [])).toBe(0);
-    });
+  test('Debe retornar 0 si los arreglos están vacíos', () => {
+    expect(calcularPromedioPonderado([], [])).toBe(0);
+  });
 
-    test('Debe retornar 0 si falta algún parámetro', () => {
-        expect(calcularPromedioPonderado(null, null)).toBe(0);
-    });
+  test('Debe retornar 0 si falta algún parámetro', () => {
+    expect(calcularPromedioPonderado(null, null)).toBe(0);
+  });
 });
-
 
 //se haecr una descripcion de la prueba para que en el git se muestre ordenado
 // describe('Pruebas de Calculo de Promedio Ponderado (1-100)', () => {

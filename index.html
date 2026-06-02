@@ -1,72 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Calculadora de Promedio Ponderado</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        .form-group { margin-bottom: 10px; }
-        input { margin-left: 10px; }
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      input {
+        margin-left: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Calculadora de Notas</h1>
-    
-    <div class="form-group">Nota 1 (10%): <input type="number" id="n1"></div>
-    <div class="form-group">Nota 2 (20%): <input type="number" id="n2"></div>
-    <div class="form-group">Nota 3 (30%): <input type="number" id="n3"></div>
-    <div class="form-group">Nota 4 (40%): <input type="number" id="n4"></div>
-    
+
+    <div class="form-group">Nota 1 (10%): <input type="number" id="n1" /></div>
+    <div class="form-group">Nota 2 (20%): <input type="number" id="n2" /></div>
+    <div class="form-group">Nota 3 (30%): <input type="number" id="n3" /></div>
+    <div class="form-group">Nota 4 (40%): <input type="number" id="n4" /></div>
+
     <button onclick="calcular()">Calcular Promedio</button>
     <button onclick="limpiar()">Limpiar</button>
-    
+
     <h2 id="resultado"></h2>
 
-    <script src="app.js" ></script>
+    <script src="app.js"></script>
 
     <script>
-            function calcular() {
-                const n1 = parseFloat(document.getElementById('n1').value);//se define las variables que van a tomar el valor de las notas
-                const n2 = parseFloat(document.getElementById('n2').value);
-                const n3 = parseFloat(document.getElementById('n3').value);
-                const n4 = parseFloat(document.getElementById('n4').value);
-                
-                try {
-                    //se llama a la funcion calcularPromedioPonderado donde estan los calculos, 
+      function calcular() {
+        const n1 = parseFloat(document.getElementById('n1').value); //se define las variables que van a tomar el valor de las notas
+        const n2 = parseFloat(document.getElementById('n2').value);
+        const n3 = parseFloat(document.getElementById('n3').value);
+        const n4 = parseFloat(document.getElementById('n4').value);
 
-                    const resultado = calcularPromedioPonderado(n1, n2, n3, n4);
-                    //si todo sale bine se muestra el resultado como "Prmedio Final: resultado" todo eso en negro
-                    document.getElementById('resultado').innerText = "Promedio Final: " + resultado;
-                    document.getElementById('resultado').style.color = "black";
-                    
-                    //aqui se muestra si esta aprobado o  no 
-                    if (resultado >= 50.5) {
-                        document.getElementById('resultado').innerText += " - Aprobado";
-                        document.getElementById('resultado').style.color = "green";
-                    } else {
-                        document.getElementById('resultado').innerText += " - Reprobado";
-                        document.getElementById('resultado').style.color = "red";
-                    }
+        try {
+          //se llama a la funcion calcularPromedioPonderado donde estan los calculos,
 
+          const resultado = calcularPromedioPonderado(n1, n2, n3, n4);
+          //si todo sale bine se muestra el resultado como "Prmedio Final: resultado" todo eso en negro
+          document.getElementById('resultado').innerText =
+            'Promedio Final: ' + resultado;
+          document.getElementById('resultado').style.color = 'black';
 
-                } catch (error) {
-                    // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo     
-                    document.getElementById('resultado').innerText = error.message;
-                    document.getElementById('resultado').style.color = "red";
-                }
-            }
+          //aqui se muestra si esta aprobado o  no
+          if (resultado >= 50.5) {
+            document.getElementById('resultado').innerText += ' - Aprobado';
+            document.getElementById('resultado').style.color = 'green';
+          } else {
+            document.getElementById('resultado').innerText += ' - Reprobado';
+            document.getElementById('resultado').style.color = 'red';
+          }
+        } catch (error) {
+          // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo
+          document.getElementById('resultado').innerText = error.message;
+          document.getElementById('resultado').style.color = 'red';
+        }
+      }
 
-            function limpiar() {
-                // borra los valores que hay en las notas
-                document.getElementById('n1').value = "";
-                document.getElementById('n2').value = "";
-                document.getElementById('n3').value = "";
-                document.getElementById('n4').value = "";
-                
-                // limpia el resultado que se muestra en pantalla
-                document.getElementById('resultado').innerText = "";
-            }
+      function limpiar() {
+        // borra los valores que hay en las notas
+        document.getElementById('n1').value = '';
+        document.getElementById('n2').value = '';
+        document.getElementById('n3').value = '';
+        document.getElementById('n4').value = '';
 
+        // limpia el resultado que se muestra en pantalla
+        document.getElementById('resultado').innerText = '';
+      }
     </script>
-</body>
+  </body>
 </html>
