@@ -1,10 +1,10 @@
-version: '3'
-services:
-  app:
-    build: .
+version: '3' # se define la version del formato de docker-compose
+services: # se definen los contenedores que van a correr juntos
+  app: # se define el contenedor de la aplicacion principal
+    build: . # construye la imagen usando el Dockerfile de esta misma carpeta
     ports:
-      - '3000:3000'
-  db:
-    image: mongo
+      - '3000:3000' # mapea el puerto 3000 de tu pc al puerto 3000 del contenedor
+  db: # se define el contenedor para la base de datos
+    image: mongo # usa la imagen oficial de mongodb descargada de internet
     ports:
-      - '27017:27017'
+      - '27017:27017' # mapea el puerto por defecto de la base de datos mongo

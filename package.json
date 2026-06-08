@@ -71,6 +71,7 @@
     "test": "jest",
     "lint": "eslint",
     "precommit": "lint-staged",
+    "format": "prettier --write .",
     "prepare": "husky"
   },
   "keywords": [],
