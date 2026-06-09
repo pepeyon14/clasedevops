@@ -2,12 +2,13 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Calculadora de Promedio Ponderado</title>
+    <title>Calculadora de Notas - Demo Final</title>
     <style>
-      /* Reset básico y fondo de la página */
+      /* Fondo oscuro moderno */
       body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f0f2f5;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: #f8fafc;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -15,131 +16,123 @@
         margin: 0;
       }
 
-      /* Tarjeta blanca central */
+      /* Tarjeta principal estilo "Dark Glass" */
       .container {
-        background-color: #ffffff;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
+        background-color: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 420px;
         width: 100%;
       }
 
       h1 {
         text-align: center;
-        color: #333333;
-        font-size: 26px;
-        margin-bottom: 25px;
-        border-bottom: 2px solid #f0f2f5;
-        padding-bottom: 10px;
+        color: #60a5fa; /* Azul neón */
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+        padding-bottom: 15px;
       }
 
-      /* Estructura de las filas de notas */
+      /* Filas del formulario */
       .form-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
         font-weight: 500;
-        color: #555555;
+        font-size: 16px;
+        color: #cbd5e1;
       }
 
-      /* Estilo de los cuadros de texto */
-      input[type='number'] {
-        width: 80px;
-        padding: 10px 12px;
-        border: 1px solid #cccccc;
-        border-radius: 6px;
+      /* Cuadros de texto oscuros */
+      input[type="number"] {
+        width: 90px;
+        padding: 10px 15px;
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        color: #ffffff;
         font-size: 16px;
         outline: none;
-        transition:
-          border-color 0.3s,
-          box-shadow 0.3s;
+        transition: all 0.3s ease;
       }
 
-      input[type='number']:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      input[type="number"]:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
       }
 
-      /* Alineación de los botones */
+      /* Botones modernos */
       .botones {
         display: flex;
         gap: 15px;
-        margin-top: 25px;
+        margin-top: 30px;
       }
 
-      /* Diseño general de botones */
       button {
         flex: 1;
-        padding: 12px;
+        padding: 14px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
-        transition:
-          background-color 0.3s,
-          transform 0.1s;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
       }
 
       button:active {
-        transform: scale(0.97);
+        transform: translateY(2px);
       }
 
-      /* Botón principal (Calcular) */
       .btn-calcular {
-        background-color: #007bff;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         color: white;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
       }
 
       .btn-calcular:hover {
-        background-color: #0056b3;
+        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
       }
 
-      /* Botón secundario (Limpiar) */
       .btn-limpiar {
-        background-color: #e4e6eb;
-        color: #333333;
+        background-color: #334155;
+        color: #f8fafc;
       }
 
       .btn-limpiar:hover {
-        background-color: #d8dadf;
+        background-color: #475569;
       }
 
-      /* Área del resultado */
+      /* Área de resultados */
       #resultado {
         text-align: center;
-        margin-top: 25px;
-        font-size: 20px;
-        border-radius: 8px;
-        padding: 10px;
-        min-height: 24px;
-        transition: all 0.3s ease;
+        margin-top: 30px;
+        font-size: 22px;
+        font-weight: bold;
+        min-height: 30px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Calculadora de Notas</h1>
+      <h1>App DevOps v2.0</h1>
 
-      <div class="form-group">
-        Nota 1 (10%): <input type="number" id="n1" placeholder="0" />
-      </div>
-      <div class="form-group">
-        Nota 2 (20%): <input type="number" id="n2" placeholder="0" />
-      </div>
-      <div class="form-group">
-        Nota 3 (30%): <input type="number" id="n3" placeholder="0" />
-      </div>
-      <div class="form-group">
-        Nota 4 (40%): <input type="number" id="n4" placeholder="0" />
-      </div>
+      <div class="form-group">Nota 1 (10%): <input type="number" id="n1" placeholder="0" /></div>
+      <div class="form-group">Nota 2 (20%): <input type="number" id="n2" placeholder="0" /></div>
+      <div class="form-group">Nota 3 (30%): <input type="number" id="n3" placeholder="0" /></div>
+      <div class="form-group">Nota 4 (40%): <input type="number" id="n4" placeholder="0" /></div>
 
       <div class="botones">
-        <button class="btn-calcular" onclick="calcular()">
-          Calcular Promedio
-        </button>
+        <button class="btn-calcular" onclick="calcular()">Calcular</button>
         <button class="btn-limpiar" onclick="limpiar()">Limpiar</button>
       </div>
 
@@ -150,43 +143,35 @@
 
     <script>
       function calcular() {
-        const n1 = parseFloat(document.getElementById('n1').value); //se define las variables que van a tomar el valor de las notas
+        const n1 = parseFloat(document.getElementById('n1').value);
         const n2 = parseFloat(document.getElementById('n2').value);
         const n3 = parseFloat(document.getElementById('n3').value);
         const n4 = parseFloat(document.getElementById('n4').value);
 
         try {
-          //se llama a la funcion calcularPromedioPonderado donde estan los calculos,
           const resultado = calcularPromedioPonderado(n1, n2, n3, n4);
-
-          //si todo sale bine se muestra el resultado como "Prmedio Final: resultado" todo eso en negro
-          document.getElementById('resultado').innerText =
-            'Promedio Final: ' + resultado;
-          document.getElementById('resultado').style.color = '#333333';
-
-          //aqui se muestra si esta aprobado o  no
+          
+          document.getElementById('resultado').innerText = 'Promedio: ' + resultado;
+          
+          // Colores de alto contraste para el modo oscuro
           if (resultado >= 50.5) {
-            document.getElementById('resultado').innerText += ' - Aprobado';
-            document.getElementById('resultado').style.color = '#28a745'; // Un verde más amigable
+            document.getElementById('resultado').innerText += ' - APROBADO';
+            document.getElementById('resultado').style.color = '#4ade80'; // Verde neón
           } else {
-            document.getElementById('resultado').innerText += ' - Reprobado';
-            document.getElementById('resultado').style.color = '#dc3545'; // Un rojo más moderno
+            document.getElementById('resultado').innerText += ' - REPROBADO';
+            document.getElementById('resultado').style.color = '#f87171'; // Rojo neón
           }
         } catch (error) {
-          // si la funcion sale error mpstrara el mensaje de error que hay en le promedio.test.js en rojo
           document.getElementById('resultado').innerText = error.message;
-          document.getElementById('resultado').style.color = '#dc3545';
+          document.getElementById('resultado').style.color = '#f87171';
         }
       }
 
       function limpiar() {
-        // borra los valores que hay en las notas
         document.getElementById('n1').value = '';
         document.getElementById('n2').value = '';
         document.getElementById('n3').value = '';
         document.getElementById('n4').value = '';
-
-        // limpia el resultado que se muestra en pantalla
         document.getElementById('resultado').innerText = '';
       }
     </script>
